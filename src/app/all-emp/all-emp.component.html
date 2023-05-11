@@ -1,0 +1,70 @@
+<div style="margin:2%; margin-top: 3%;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <h1 style="color: white; margin-left: 2%;"><b>All Employee List</b></h1>
+
+        <button mat-button style="margin-left: 74%; color: white;" (click)="logout()"><span class="material-icons"
+                style="color: white;">logout</span>Logout</button>
+    </nav>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+        <ng-container matColumnDef="fname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 1.1rem;"><b>First Name</b></th>
+            <td mat-cell *matCellDef="let row"> {{row.fname}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 1.1rem;"><b>Last name</b></th>
+            <td mat-cell *matCellDef="let row"> {{row.lname}} </td>
+        </ng-container>
+        <ng-container matColumnDef="empid">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 1.1rem;"><b>Employee ID</b></th>
+            <td mat-cell *matCellDef="let row">
+                <b><a style="color: rgba(146, 9, 9);text-decoration: none;"
+                        [routerLink]="['/emp/'+ row.empid]">{{row.empid}} </a></b>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 1.1rem;"><b>Email</b></th>
+            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="record">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 1.1rem;"><b>Created Record On</b>
+            </th>
+            <td mat-cell *matCellDef="let row"> {{row.record | date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 1.1rem;"><b>Joining date</b></th>
+            <td mat-cell *matCellDef="let row"> {{row.date | date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="img">
+            <th mat-header-cell *matHeaderCellDef style="font-size: 1.1rem;"> <b>Pic</b></th>
+            <td mat-cell *matCellDef="let row">
+                <img [src]="row.img" width="50">
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="family">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 1.1rem;"><b>Family Members</b>
+            </th>
+            <td mat-cell *matCellDef="let row">
+
+                <p *ngFor="let abc of row.family"><b>Name:</b> {{abc.name}} <br> <b>Occupation:</b> {{abc.occupation}}
+                    <br> <b>Age:</b>
+                    {{abc.age}}
+                </p>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef style="font-size: 1.1rem;"><b>Action</b></th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button [routerLink]="['/edit/'+ row.id]">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteemployee(row.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

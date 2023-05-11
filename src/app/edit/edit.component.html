@@ -1,0 +1,85 @@
+<mat-card class="card">
+    <mat-card-content>
+        <div class="container">
+            <div>
+                <h1 style="text-align: center;"><b>Edit Employee</b></h1>
+            </div>
+            <form id="myForm">
+                <div class="contain">
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>First Name</mat-label>
+                                <input matInput name="fname" [(ngModel)]="Student.fname">
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput name="lname" [(ngModel)]="Student.lname">
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Email</mat-label>
+                                <input matInput name="email" [(ngModel)]="Student.email" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Password</mat-label>
+                                <input matInput name="password" [(ngModel)]="Student.password">
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Created Record on</mat-label>
+                                <input matInput name="record" [(ngModel)]="Student.record">
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Phone Number</mat-label>
+                                <input matInput name="phone" [(ngModel)]="Student.phone">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <h3>Family Members</h3>
+                    <div class="row" *ngFor="let abc of Student.family; let i = index">
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Name</mat-label>
+                                <input matInput name="name{{i}}" [(ngModel)]="abc.name">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Occupation</mat-label>
+                                <input matInput name="occupation{{i}}" [(ngModel)]="abc.occupation">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Age</mat-label>
+                                <input matInput name="age{{i}}" [(ngModel)]="abc.age">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div mat-dialog-actions align="end">
+                    <button type="submit" mat-raised-button color="primary" style="align-items: right;"
+                        (click)="updateEmployee()">Update</button>
+                </div>
+            </form>
+
+        </div>
+    </mat-card-content>
+</mat-card>

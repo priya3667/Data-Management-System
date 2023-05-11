@@ -1,0 +1,53 @@
+<mat-card class="card">
+    <mat-card-content>
+        <section class="vh-100" style="background-color: #f5f9fa;">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <h1 style="text-align: center; font-size: 40px;">
+                        <b>{{empdetailbyid.fname}}&nbsp;{{empdetailbyid.lname}}</b>
+                    </h1>
+                    <img src="{{empdetailbyid.img}}" (error)="setDefaultPic()" alt="No  image" class="img-fluid"
+                        style="width: 280px; border-radius: 50%; height: 250px;">
+
+                    <div class="row" style="text-align: center;">
+                        <div class="col">
+                            <p class="small text-muted mb-1"><b>Employee ID</b></p>
+                            <p><b>{{empdetailbyid.empid}}</b></p>
+                        </div>
+                        <div class="col">
+                            <p class="small text-muted mb-1"><b>Email ID</b></p>
+                            <p><b>{{empdetailbyid.email}}</b></p>
+                        </div>
+                        <div class="col">
+                            <p class="small text-muted mb-1"><b>Recorded On</b></p>
+                            <p class="mb-0">{{empdetailbyid.record |date}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row" style="text-align: center;">
+                        <div class="col">
+                            <p class="small text-muted mb-1"><b>Joining Date</b></p>
+                            <p class="mb-0">{{empdetailbyid.date |date}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="small text-muted mb-1"><b>Phone no. :</b></p>
+                            <p class="mb-0">{{empdetailbyid.phone}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="small text-muted mb-1"><b>Family Members</b></p>
+
+                            <div *ngFor="let abc of empdetailbyid.family" class="small text-muted mb-1">Name: {{
+                                abc.name }} </div>
+                            <div *ngFor="let abc of empdetailbyid.family" class="small text-muted mb-1">Occupation:
+                                {{ abc.occupation }}
+                            </div>
+                            <div *ngFor="let abc of empdetailbyid.family" class="small text-muted mb-1">Age: {{
+                                abc.age }} </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </mat-card-content>
+</mat-card>
