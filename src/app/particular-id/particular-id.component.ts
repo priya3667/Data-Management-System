@@ -16,7 +16,7 @@ export class ParticularIdComponent {
   empid:any;
   empdetailbyid:any
 
-  setDefaultPic() {
+  dummyPic() {
     this.empdetailbyid.img = "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg";
   }
 

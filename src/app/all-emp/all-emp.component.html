@@ -53,13 +53,15 @@
 
             </td>
         </ng-container>
+
         <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef style="font-size: 1.1rem;"><b>Action</b></th>
-            <td mat-cell *matCellDef="let row">
-                <button mat-icon-button [routerLink]="['/edit/'+ row.id]">
+            <th mat-header-cell *matHeaderCellDef style="font-size: 1.1rem;" [hidden]="role === 'Viewer'"> <b>Action</b>
+            </th>
+            <td mat-cell *matCellDef="let element" [hidden]="role === 'Viewer'">
+                <button mat-icon-button [routerLink]="['/edit/'+ element.id]">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="deleteemployee(row.id)">
+                <button mat-icon-button color="warn" (click)="deleteemployee(element.id)" [hidden]="role === 'Editor'">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
